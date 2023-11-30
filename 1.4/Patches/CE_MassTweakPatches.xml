@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+
+	<Operation Class="XmlExtensions.OptionalPatch">
+		<modId>basics.cemasstweak</modId>
+		<key>FullModToggle</key>
+		<defaultValue>true</defaultValue>
+		<caseTrue>
+			<Operation Class="XmlExtensions.AggregateValues">
+				<valueOperations>
+					<!-- RaidEnemyWeight -->
+					<Operation Class="XmlExtensions.UseSetting">
+						<modId>basics.eventprobabilities</modId>
+						<key>RaidEnemyWeight</key>
+						<defaultValue>7.4</defaultValue>
+					</Operation>
+				</valueOperations>
+            	<apply>
+					<!-- RaidEnemyWeight -->
+					<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/StatDef[defName = "CarryWeight"]/capacityFactors</xpath>
+						<value>
+							<capacityFactors>
+								<li>
+									<capacity>Moving</capacity>
+									<weight>0</weight>
+								</li>
+							</capacityFactors>
+						</value>
+					</Operation>
+				</apply>
+        	</Operation>
+		</caseTrue>
+	</Operation>
+</Patch>
+	
